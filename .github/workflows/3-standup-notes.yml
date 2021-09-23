@@ -1,11 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: 3 - Quote of Day Service
+name: 3 - Post Standup Notes
 
 # Controls when the workflow will run
 on:
   schedule:
-    - cron:  '0 4 * 9-12 1-5' #'0 4 * * 1-5' # Runs M-F at 4:00am UTC
+    - cron:  '20 20 * * 1-5' #'0 4 * * 1-5' # Runs M-F at 4:00am UTC
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,7 +20,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
-      - name: Retrieve a quote and send it to a Discord Channel
+      - name: Remind channel to turn in standup notes
         run: |
-          QUOTE=$(curl -s http://api.quotable.io/random | jq '"\(.content) - _\(.author)_"')
-          curl -s -X POST "${{ secrets.WEBHOOK_URL }}" -d "content=$QUOTE"
+          curl -s -X POST "${{ secrets.WEBHOOK_URL }}" -d "content=Turn in standup notes."

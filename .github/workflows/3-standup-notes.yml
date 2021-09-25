@@ -23,4 +23,4 @@ jobs:
       - name: Remind channel to turn in standup notes
         run: |
           QUOTE=$(curl -s http://api.quotable.io/random | jq '"\(.content) - _\(.author)_"')
-          curl -s -X POST "${{ secrets.WEBHOOK_URL }}" -d "content=$QUOTE"
+          curl -s -X POST "${{ secrets.WEBHOOK_URL }}" -d "content=Please remember to turn in your standup notes!~  also, autumn is the best!"
